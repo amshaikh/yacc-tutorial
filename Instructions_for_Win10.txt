@@ -1,0 +1,53 @@
+Installation on Win10:
+======================
+1- install DEV C++ in C:\Program Files (x86)\Dev-Cpp\
+
+2- Download Flex from http://gnuwin32.sourceforge.net/downlinks/flex.php
+
+3- Install Flex in C:\GnuWin32
+
+4- Download Bison from http://downloads.sourceforge.net/gnuwin32/bison-2.4.1-setup.exe
+
+5- Install Bison in C:\GnuWin32
+
+6- Create file Lex.bat in C:\GnuWin32\bin and put following one line into it using notepad:
+@flex -l %1 %2 %3 %4 %5 %6 %7 %8 %9
+
+7- Create file Yacc.bat in C:\GnuWin32\bin and put following one line into it using notepad:
+@bison -y %1 %2 %3 %4 %5 %6 %7 %8 %9
+
+8- Update PATH to include folders C:\GnuWin32\bin and C:\Program Files (x86)\Dev-Cpp\MinGW64\bin using following steps:
+   a- Open "System Properties" by running SystemPropertiesProtection.exe
+   b- Jump to "Advanced" tab
+   c- Press "Environment Variables" button
+   d- In the bottom section, select the system variable "Path" and press the Edit button
+   e- Press the "New" button, type C:\GnuWin32\bin and press enter
+   f- Again Press the "New" button. Type C:\Program Files (x86)\Dev-Cpp\MinGW64\bin and press enter
+   g- press OK
+   h- press OK
+   i- press OK
+
+
+Setting up and Running the Calc example:
+======================================== 
+1- Create folder C:\GnuWin32\Projects\Calc
+
+2- Create file C:\GnuWin32\Projects\Calc\calc.l with contents from https://github.com/jengelsma/yacc-tutorial/blob/master/calc.l
+
+3- Create file C:\GnuWin32\Projects\Calc\calc.y with contents from https://github.com/jengelsma/yacc-tutorial/blob/master/calc.y
+
+4- open command prompt window
+
+5- enter command "cd C:\GnuWin32\Projects\Calc" to make it your current directory
+
+6- enter command "yacc -d calc.y" to generate y.tab.c and y.tab.h files
+
+7- enter command "lex calc.l" to generate lex.yy.c file
+
+8- enter command "gcc lex.yy.c y.tab.c -o calc.exe" to compile the generated c programs into an executable.
+
+9- run the executable by issuing the command "calc.exe"
+
+10- Test it by entering "print 2+3;"
+
+
